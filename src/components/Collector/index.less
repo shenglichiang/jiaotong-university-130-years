@@ -3,15 +3,13 @@
   width: 50vw;
   height: 9.7vw;
 
-  top: 167vw;
-  left: 50vw;
-
-  transform: translate(-50%, 0);
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.7));
 
   z-index: 100;
 
   //   background-color: #16ca22;
+
+  animation: popOut 0.5s ease-in-out 1s forwards;
 
   display: flex;
   justify-content: space-evenly;
@@ -50,5 +48,36 @@
     left: 0;
     object-fit: contain;
     // z-index: 8;
+  }
+}
+
+@keyframes popOut {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) translateX(-50%);
+    top: 167vw;
+    left: 50vw;
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.15) translateX(-50%);
+    top: 167vw;
+    left: 50vw;
+  }
+  65% {
+    transform: scale(0.95) translateX(-50%);
+    top: 167vw;
+    left: 50vw;
+  }
+  85% {
+    transform: scale(1.05) translateX(-50%);
+    top: 167vw;
+    left: 50vw;
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1) translateX(-50%);
+    top: 167vw;
+    left: 50vw;
   }
 }

@@ -2,6 +2,14 @@
   width: 100vw;
   position: relative;
 
+  /* 阻尼滑动 + 惯性滚动 */
+  overflow-y: scroll;
+  height: 100vh;
+  -webkit-overflow-scrolling: touch; /* iOS 惯性阻尼 */
+  scroll-behavior: smooth; /* 平滑滑动 */
+  overscroll-behavior: contain; /* 边缘阻尼 */
+  overflow-x: hidden;
+
   .train1 {
     position: absolute;
     animation: train1 2s ease-out forwards;
@@ -11,6 +19,8 @@
   .train2 {
     position: absolute;
     animation: train2in 1.7s ease-out 0.5s forwards;
+
+    max-width: 100vw;
   }
   .trainGone {
     animation: train2out 1.3s ease-out forwards;
@@ -20,11 +30,27 @@
     width: 8vw;
     height: 8vw;
 
-    top: 168vw;
+    // top: 168vw;
+    // left: 27.2vw;
+    z-index: 101;
+  }
+  .beijingPopOut {
+    animation: beijingBadge 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .beijingPop {
+    position: absolute;
+    width: 66vw;
+
+    top: 78vw;
     left: 27.2vw;
+    backface-visibility: hidden;
+    transform: perspective(1200px);
     z-index: 101;
 
-    animation: beijingBadge 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: CardFlipIn 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    opacity: 0;
+    transform-origin: center center;
   }
 
   // 绿色火车——————————
@@ -110,6 +136,7 @@
     top: 301vw;
     left: 50vw;
     opacity: 0;
+    // background-color: #1d839d;
   }
   .acceptanceLetterPop {
     animation: acceptanceLetterPop 1.2s cubic-bezier(0.17, 0.67, 0.35, 1.2)
@@ -121,10 +148,29 @@
     width: 8vw;
     height: 8vw;
 
-    top: 168vw;
-    left: 40vw;
+    // top: 168vw;
+    // left: 40vw;
     z-index: 101;
 
+    // animation: xianBadge 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .xianPop {
+    position: absolute;
+    width: 66vw;
+
+    top: 378vw;
+    left: 10vw;
+    backface-visibility: hidden;
+    transform: perspective(1200px);
+    z-index: 101;
+
+    animation: CardFlipIn 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    opacity: 0;
+    transform-origin: center center;
+  }
+
+  .xianPopOut {
     animation: xianBadge 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
@@ -147,10 +193,29 @@
     width: 8vw;
     height: 8vw;
 
-    top: 168vw;
-    left: 53vw;
+    // top: 168vw;
+    // left: 53vw;
     z-index: 101;
 
+    // animation: shanghaiBadge 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .shanghaiPop {
+    position: absolute;
+    width: 66vw;
+
+    top: 465vw;
+    left: 17vw;
+    backface-visibility: hidden;
+    transform: perspective(1200px);
+    z-index: 101;
+
+    animation: CardFlipIn 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    opacity: 0;
+    transform-origin: center center;
+  }
+
+  .shanghaiPopOut {
     animation: shanghaiBadge 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
@@ -165,19 +230,87 @@
     width: 6.85vw;
     height: 8vw;
 
-    top: 168vw;
-    left: 65.6vw;
+    // top: 168vw;
+    // left: 65.6vw;
     z-index: 101;
 
     // animation: shanghaiBadge 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
+  .xinanPop {
+    position: absolute;
+    width: 66vw;
+
+    top: 613vw;
+    left: 17vw;
+    backface-visibility: hidden;
+    transform: perspective(1200px);
+    z-index: 101;
+
+    animation: CardFlipIn 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    opacity: 0;
+    transform-origin: center center;
+  }
+  .xinanPopOut {
+    animation: xinanBadge 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  // 背景图及其他——————————————————
   .longImg {
     width: 100%;
     user-select: none;
+    pointer-events: none;
+  }
+
+  .seeLetter {
+    position: fixed;
+
+    width: 50vw;
+    height: 9.7vw;
+
+    top: 167vw;
+    left: 50vw;
+
+    transform: translate(-50%, 0);
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.7));
+
+    z-index: 2201;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btnText {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      text-align: center;
+      line-height: 9.7vw;
+      color: #ffffff;
+      animation: btnBreath 3s ease-in-out infinite;
+
+      // background-color: #7ab255;
+    }
+    .seemoreBtn {
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+
+  .letter {
+    position: absolute;
+    width: 80vw;
+
+    top: 713vw;
+    left: 11vw;
+
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.7));
   }
 }
 
+// 关键帧------------------------------
 @keyframes train1 {
   0% {
     left: 25vw;
@@ -303,7 +436,7 @@
     transform: scale(1.05);
   }
   100% {
-    opacity: 0.8;
+    opacity: 0.97;
     transform: scale(1);
   }
 }
@@ -377,5 +510,28 @@
     left: 65.6vw;
     opacity: 1;
     transform: scale(1) translate(0, 0);
+  }
+}
+
+@keyframes CardFlipIn {
+  0% {
+    opacity: 0;
+    transform: perspective(1200px) rotateX(-80deg) scale(0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1200px) rotateX(0deg) scale(1);
+  }
+}
+
+@keyframes btnBreath {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
   }
 }

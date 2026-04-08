@@ -54,6 +54,7 @@ export default function HomePage() {
       <audio ref={audioRef} src={bgm} loop style={{ display: "none" }} />
 
       {isTicketClicked ? <MainTracks /> : <StartPage />}
+      {/* <MainTracks /> */}
     </div>
   );
 }
