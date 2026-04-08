@@ -7,4 +7,6 @@ export default defineConfig({
     type: "hash",
   },
   publicPath: process.env.NODE_ENV === "production" ? "./" : "/",
+  base: "/scgchc_activity/scgc_jiaotong130/",
+  hash: true,
 });
