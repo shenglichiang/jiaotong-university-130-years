@@ -29,6 +29,7 @@ const StartPage = () => {
   const [isNewsPlaying, setIsNewsPlaying] = useState(false);
   const [isReminderShow, setIsReminderShow] = useState(true);
   const [isnewsEnd, setIsnewsEnd] = useState(false);
+  const [textShow, setTextShow] = useState(false);
 
   // 加载动画
   useEffect(() => {
@@ -51,14 +52,17 @@ const StartPage = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // 音频播放（稳定、防抖、重置状态）
+  // 音频播放
   const handleNewsplay = useCallback(async () => {
+    console.log("dian点击了");
+
     const audio = newsAudioRef.current;
     if (!audio || isNewsPlaying) return;
 
     // 重播：重置所有状态
     setIsReminderShow(false);
     setIsnewsEnd(false);
+    setTextShow(true);
 
     try {
       setIsNewsPlaying(true);
@@ -96,6 +100,7 @@ const StartPage = () => {
 
   // 打字机效果
   useEffect(() => {
+    if (!textShow) return;
     let index = 0;
     const timer = setInterval(() => {
       if (index < text.length) {
@@ -106,7 +111,7 @@ const StartPage = () => {
       }
     }, 170);
     return () => clearInterval(timer);
-  }, []);
+  }, [textShow]);
 
   // 点击车票进入
   const startJurney = () => {
@@ -122,6 +127,9 @@ const StartPage = () => {
 
   return (
     <div className={styles.startContainer}>
+      {/* 标题与背景 */}
+      <img src={maintitle} alt="主标题" className={styles.maintitle} />
+      <img src={startbgimg} alt="背景" className={styles.startbgimg} />
       {isLoading ? (
         // 加载中
         <div className={styles.loadingWrap}>
@@ -142,7 +150,7 @@ const StartPage = () => {
           {/* 点击提示 */}
           {isReminderShow && (
             <ClickReminder
-              top={105}
+              top={85}
               left={74}
               zindex={9999}
               onClick={handleNewsplay}
@@ -153,7 +161,7 @@ const StartPage = () => {
             className={`${styles.textWrapper} ${isnewsEnd ? styles.fadeAway : ""}`}
             onClick={handleNewsplay}
           >
-            <div className={styles.newsTxt}>{displayText}</div>
+            {textShow && <div className={styles.newsTxt}>{displayText}</div>}
           </div>
 
           {/* 车票 */}
@@ -169,10 +177,6 @@ const StartPage = () => {
           />
         </>
       )}
-
-      {/* 标题与背景 */}
-      <img src={maintitle} alt="主标题" className={styles.maintitle} />
-      <img src={startbgimg} alt="背景" className={styles.startbgimg} />
     </div>
   );
 };

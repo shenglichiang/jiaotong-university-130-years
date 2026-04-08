@@ -8,16 +8,25 @@ interface IClickReminder {
   className?: string;
 }
 
-const ClickReminder = ({ top, left, onClick, zindex }: IClickReminder) => {
+const ClickReminder = ({
+  top,
+  left,
+  onClick,
+  zindex,
+  className = "",
+}: IClickReminder) => {
   return (
     <div
-      className={styles.clickTipRing}
+      className={`${styles.clickTipRing} ${className}`}
       style={{
         top: `${top}vw`,
         left: `${left}vw`,
         zIndex: zindex,
+        cursor: "pointer",
       }}
+      onClick={onClick}
     ></div>
   );
 };
+
 export default ClickReminder;

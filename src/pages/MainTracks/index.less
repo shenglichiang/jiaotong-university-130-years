@@ -10,6 +10,16 @@
   overscroll-behavior: contain; /* 边缘阻尼 */
   overflow-x: hidden;
 
+  .seeVideo {
+    position: absolute;
+    width: 38vw;
+
+    top: 10vw;
+    left: 10vw;
+
+    animation: btnBreath 2.2s ease-in-out infinite;
+  }
+
   .train1 {
     position: absolute;
     animation: train1 2s ease-out forwards;
@@ -133,8 +143,8 @@
   .acceptanceLetter {
     position: absolute;
     width: 45vw;
-    top: 301vw;
-    left: 50vw;
+    top: 255vw;
+    left: 28vw;
     opacity: 0;
     // background-color: #1d839d;
   }
@@ -159,7 +169,7 @@
     position: absolute;
     width: 66vw;
 
-    top: 378vw;
+    top: 348vw;
     left: 10vw;
     backface-visibility: hidden;
     transform: perspective(1200px);
@@ -172,6 +182,14 @@
 
   .xianPopOut {
     animation: xianBadge 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .machine {
+    position: absolute;
+    width: 45vw;
+
+    top: 336vw;
+    left: 50vw;
   }
 
   // 轮船交互——————————
@@ -301,12 +319,53 @@
 
   .letter {
     position: absolute;
-    width: 80vw;
+    width: 92vw;
 
-    top: 713vw;
-    left: 11vw;
+    top: 694vw;
+    left: 4vw;
 
     filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.7));
+  }
+
+  .btnsWrapper {
+    position: absolute;
+    top: 830vw;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12vw;
+    z-index: 101;
+  }
+
+  .btnItem {
+    position: relative;
+    width: 28vw;
+    height: 10vw;
+    cursor: pointer;
+  }
+
+  .btnBg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: btnBreath 3s ease-in-out infinite;
+  }
+
+  .btnText {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.6vw;
+    color: #fff;
+    z-index: 2;
+
+    animation: btnBreath 3s ease-in-out infinite;
   }
 }
 
