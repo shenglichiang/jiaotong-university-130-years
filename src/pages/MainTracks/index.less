@@ -1,0 +1,381 @@
+.mainTracks {
+  width: 100vw;
+  position: relative;
+
+  .train1 {
+    position: absolute;
+    animation: train1 2s ease-out forwards;
+  }
+
+  // 火车交互——————————
+  .train2 {
+    position: absolute;
+    animation: train2in 1.7s ease-out 0.5s forwards;
+  }
+  .trainGone {
+    animation: train2out 1.3s ease-out forwards;
+  }
+  .beijingBadge {
+    position: fixed;
+    width: 8vw;
+    height: 8vw;
+
+    top: 168vw;
+    left: 27.2vw;
+    z-index: 101;
+
+    animation: beijingBadge 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  // 绿色火车——————————
+  .trainGreen {
+    position: absolute;
+    width: 0.1vw;
+    opacity: 0;
+    animation: trainGreen 1.8s ease-in-out 1s forwards;
+  }
+  // 火车黄色灯光 + 光芒效果
+  .trainLights {
+    position: absolute;
+    z-index: 10;
+    animation: trainLights 1.8s ease-in-out 3s forwards;
+
+    .light1 {
+      position: absolute;
+      left: 34.5vw; /* 内部偏移 */
+      top: 1.5vw;
+
+      width: 12px;
+      height: 12px;
+      background: rgba(255, 204, 0, 1);
+      border-radius: 50%;
+
+      // 多层光晕\
+      box-shadow:
+        0 0 6px 2px #ffdd44,
+        0 0 14px 6px #ffcc22,
+        0 0 24px 12px #ffaa00,
+        0 0 36px 18px rgba(255, 180, 0, 0.4);
+
+      // 轻微呼吸闪烁
+      animation: lightShine 1.5s ease-in-out infinite alternate;
+    }
+
+    .light2 {
+      position: absolute;
+      left: 27.5vw;
+      top: 14.5vw;
+
+      width: 10px;
+      height: 12px;
+      background: rgba(255, 204, 0, 1);
+      border-radius: 20%;
+
+      // 多层光晕\
+      box-shadow:
+        0 0 6px 2px #ffdd44,
+        0 0 14px 6px #ffcc22,
+        0 0 24px 12px #ffaa00,
+        0 0 36px 18px rgba(255, 180, 0, 0.4);
+
+      // 轻微呼吸闪烁
+      animation: lightShineSmall 1.5s ease-in-out infinite alternate;
+    }
+
+    .light3 {
+      position: absolute;
+      left: 42vw;
+      top: 13.6vw;
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 204, 0, 1);
+      border-radius: 20%;
+
+      // 多层光晕\
+      box-shadow:
+        0 0 6px 2px #ffdd44,
+        0 0 14px 6px #ffcc22,
+        0 0 24px 12px #ffaa00,
+        0 0 36px 18px rgba(255, 180, 0, 0.4);
+
+      // 轻微呼吸闪烁
+      animation: lightShineSmall 1.5s ease-in-out infinite alternate;
+    }
+  }
+
+  // 通知书交互——————————
+  .acceptanceLetter {
+    position: absolute;
+    width: 45vw;
+    top: 301vw;
+    left: 50vw;
+    opacity: 0;
+  }
+  .acceptanceLetterPop {
+    animation: acceptanceLetterPop 1.2s cubic-bezier(0.17, 0.67, 0.35, 1.2)
+      forwards;
+  }
+
+  .xianBadge {
+    position: fixed;
+    width: 8vw;
+    height: 8vw;
+
+    top: 168vw;
+    left: 40vw;
+    z-index: 101;
+
+    animation: xianBadge 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  // 轮船交互——————————
+  .ship {
+    position: absolute;
+    width: 89.2vw;
+    top: 487vw;
+    left: 6.6vw;
+    transition: opacity 2.5s ease;
+    cursor: pointer;
+  }
+  .shipHide {
+    opacity: 0; /* 👈 点击后变成透明 */
+    pointer-events: none; /* 透明后不能再点 */
+  }
+
+  .shanghaiBadge {
+    position: fixed;
+    width: 8vw;
+    height: 8vw;
+
+    top: 168vw;
+    left: 53vw;
+    z-index: 101;
+
+    animation: shanghaiBadge 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  // 高铁交互——————————
+  .highSpeed {
+    position: absolute;
+    animation: highSpeed 1.5s ease-out forwards;
+  }
+
+  .xinanBadge {
+    position: fixed;
+    width: 6.85vw;
+    height: 8vw;
+
+    top: 168vw;
+    left: 65.6vw;
+    z-index: 101;
+
+    // animation: shanghaiBadge 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .longImg {
+    width: 100%;
+    user-select: none;
+  }
+}
+
+@keyframes train1 {
+  0% {
+    left: 25vw;
+    top: 95vw;
+    width: 1vw;
+  }
+
+  100% {
+    left: 1.2vw;
+    top: 77vw;
+    width: 27vw;
+  }
+}
+
+@keyframes train2in {
+  0% {
+    left: 46vw;
+    top: 98.4vw;
+    width: 1vw;
+  }
+
+  100% {
+    left: 46vw;
+    top: 83.4vw;
+    width: 53vw;
+  }
+}
+
+@keyframes train2out {
+  0% {
+    left: 46vw;
+    top: 83.4vw;
+    width: 53vw;
+  }
+
+  100% {
+    left: 100vw;
+    top: 86.4vw;
+    width: 92vw;
+  }
+}
+
+@keyframes trainGreen {
+  0% {
+    left: 52vw;
+    top: 185.5vw;
+    width: 34vw;
+    opacity: 1;
+  }
+
+  100% {
+    left: 55vw;
+    top: 184.5vw;
+    width: 41vw;
+    opacity: 1;
+  }
+}
+
+@keyframes highSpeed {
+  0% {
+    left: 32vw;
+    top: 658.5vw;
+    width: 47vw;
+    opacity: 1;
+  }
+
+  100% {
+    left: 11vw;
+    top: 657.5vw;
+    width: 68vw;
+    opacity: 1;
+  }
+}
+
+// 呼吸光芒动画
+@keyframes lightShine {
+  from {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+@keyframes lightShineSmall {
+  from {
+    opacity: 0.1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+// 灯光跟随火车移动
+@keyframes trainLights {
+  0% {
+    left: 52vw;
+    top: 185.5vw;
+  }
+  100% {
+    left: 55vw;
+    top: 184.5vw;
+  }
+}
+
+// 通知书弹出动画
+@keyframes acceptanceLetterPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  65% {
+    transform: scale(0.95);
+  }
+  85% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+}
+
+@keyframes beijingBadge {
+  0% {
+    top: 90vw;
+    left: 78vw;
+    opacity: 0;
+    transform: scale(0.5) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.1) translate(0, -8vw);
+  }
+  100% {
+    top: 168vw;
+    left: 27.2vw;
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+@keyframes xianBadge {
+  0% {
+    top: 122vw;
+    left: 58vw;
+    opacity: 0;
+    transform: scale(0.5) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.1) translate(0, -8vw);
+  }
+  100% {
+    top: 168vw;
+    left: 40vw;
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+@keyframes shanghaiBadge {
+  0% {
+    top: 122vw;
+    left: 58vw;
+    opacity: 0;
+    transform: scale(0.5) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.1) translate(0, -8vw);
+  }
+  100% {
+    top: 168vw;
+    left: 53vw;
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+@keyframes xinanBadge {
+  0% {
+    top: 122vw;
+    left: 58vw;
+    opacity: 0;
+    transform: scale(0.5) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.1) translate(0, -8vw);
+  }
+  100% {
+    top: 168vw;
+    left: 65.6vw;
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+  }
+}

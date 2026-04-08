@@ -1,19 +1,40 @@
-html,
-body,
-#root {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  //   overflow: hidden;
+// html,
+// body,
+// #root {
+//   padding: 0;
+//   margin: 0;
+//   box-sizing: border-box;
+//   //   overflow: hidden;
 
-  /* 1. Chrome/Safari/Opera */
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  /* 2. Firefox */
-  scrollbar-width: none;
-  /* 3. IE/Edge */
-  -ms-overflow-style: none;
+//   /* 1. Chrome/Safari/Opera */
+//   ::-webkit-scrollbar {
+//     display: none;
+//   }
+//   /* 2. Firefox */
+//   scrollbar-width: none;
+//   /* 3. IE/Edge */
+//   -ms-overflow-style: none;
+// }
+
+// 全局页面滚动设置 —— UMI H5 必用
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* 禁止左右滑动 ✅ */
+  overflow-y: auto; /* 允许上下滑动 ✅ */
+  margin: 0;
+  padding: 0;
+
+  // 🔥 关键：H5 流畅惯性滚动（苹果/安卓都丝滑）
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+// 防止页面被撑开出现横向滚动条
+* {
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 img {

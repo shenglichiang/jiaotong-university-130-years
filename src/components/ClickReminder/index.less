@@ -1,0 +1,74 @@
+.clickTipRing {
+  position: absolute;
+  left: 50vw;
+  top: 190vw;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  z-index: 9999; /* 提到最上层，绝对不会被挡住 */
+  pointer-events: none;
+  cursor: pointer;
+}
+
+// 中心实心圆 —— 超级亮！超显眼！
+.clickTipRing::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffff00; /* 更亮的明黄 */
+
+  /* 🔥 超强三层光晕，超级显眼 */
+  box-shadow:
+    0 0 10px 4px #ffcc00,
+    0 0 20px 8px #ff9900,
+    0 0 30px 12px rgba(255, 153, 0, 0.6);
+
+  animation: centerPulse 1s ease-in-out infinite alternate;
+}
+
+// 扩散波纹
+.clickTipRing::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 3px solid #ffdd00;
+  opacity: 0.8;
+
+  box-shadow: 0 0 10px 4px rgba(255, 220, 0, 0.4);
+
+  animation: ringPulse 1.7s ease-out infinite;
+}
+
+@keyframes centerPulse {
+  from {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.25);
+  }
+}
+
+@keyframes ringPulse {
+  0% {
+    width: 12px;
+    height: 12px;
+    opacity: 0.8;
+  }
+  100% {
+    width: 60px; /* 扩散更大 */
+    height: 60px;
+    opacity: 0;
+  }
+}
